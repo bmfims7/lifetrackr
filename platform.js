@@ -6,7 +6,7 @@
   const LS_CFG = "ta-config", LS_QUEUE = "ta-queue", LS_SERVER = "ta-server", LS_ASIDE = "ta-aside";
   const cfg = Object.assign({}, window.TA_CONFIG || {});
   try { const saved = JSON.parse(localStorage.getItem(LS_CFG) || "null"); if (saved && !cfg.url) Object.assign(cfg, saved); } catch (e) {}
-  const P = window.PLATFORM = { mode: "pwa", cfg };
+  const P = window.PLATFORM = { mode: "pwa", cfg, loadsApp: true };
   let sb = null, user = null, readyResolve;
   const ready = new Promise(r => { readyResolve = r; });
 

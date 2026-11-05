@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="styles.css?v=01f0e7ea80">
+<link rel="stylesheet" href="styles.css?v=02be3701f0">
 </head>
 <body>
 <div class="shell">
@@ -32,11 +32,23 @@
 <nav class="tabs" id="tabs" aria-label="Sections"></nav>
 <div class="sheet" id="sheet" hidden></div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script>window.LT_APP_VERSION = "01f0e7ea80";</script>
+<script>window.LT_APP_VERSION = "02be3701f0";</script>
 <script src="vendor/supabase.js"></script>
 <script src="vendor/jspdf.umd.min.js"></script>
 <script src="config.js?v=9c125281"></script>
-<script src="platform.js?v=01f0e7ea80"></script>
+<script src="platform.js?v=02be3701f0"></script>
+<script>
+if (!(window.PLATFORM && PLATFORM.loadsApp) && !sessionStorage.getItem("lt-healed")) {
+  sessionStorage.setItem("lt-healed", "1");
+  (async () => {
+    try {
+      await Promise.all((await navigator.serviceWorker.getRegistrations()).map(r => r.unregister()));
+      await Promise.all((await caches.keys()).map(k => caches.delete(k)));
+    } catch (e) {}
+    location.reload();
+  })();
+}
+</script>
 <script>
 if ("serviceWorker" in navigator) addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
 </script>
