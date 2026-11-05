@@ -1,5 +1,5 @@
 // Turnaround service worker: makes the app open instantly and work offline.
-const VERSION = "47b94f397a-9c125281";
+const VERSION = "13e9510038-9c125281";
 const CACHE = "ta-" + VERSION;
 const SHELL = ["./", "./index.html", "./styles.css", "./platform.js", "./config.js", "./manifest.webmanifest",
   "./vendor/supabase.js", "./vendor/jspdf.umd.min.js", "./icons/icon-192.png", "./icons/apple-touch-icon.png"];
