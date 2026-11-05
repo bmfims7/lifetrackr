@@ -595,7 +595,7 @@
     const base = SHEETS.settings;
     SHEETS.settings = function (d){
       const sync = !user ? "Not signed in. Everything saves on this device only." : P.offlineAuth || navigator.onLine === false ? "Offline. Changes are saved here and sync when you're back online." : Object.keys(pend).length ? Object.keys(pend).length + " change(s) waiting to sync…" : "All changes synced.";
-      return base(d) + remindersCard() + `<div class="label">Account and data</div><div class="card stack small"><div><b>Account:</b> ${user ? esc(user.email || "signed in") : "not signed in"}</div><div class="xs muted">${sync}</div>
+      return base(d) + (window.LT_NATIVE ? "" : remindersCard()) + `<div class="label">Account and data</div><div class="card stack small"><div><b>Account:</b> ${user ? esc(user.email || "signed in") : "not signed in"}</div><div class="xs muted">${sync}</div>
       <div class="row wrapgap">${user ? `<button class="btn small" data-act="ta-signout">Sign out</button>` : `<button class="btn small primary" data-act="ta-signin">Sign in</button>`}<button class="btn small" data-act="ta-reload">Check for updates</button>${user ? `<label class="btn small" style="cursor:pointer">Import a backup<input type="file" accept="application/json,.json" data-ch="ta-import" hidden></label>` : ""}</div>
       <div class="xs muted">Your data is also backed up on the server every night (last 14 days). Download a copy any time from Reports.</div></div>`;
     };
